@@ -20,18 +20,21 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService employeeService;
 	
+	//Save an Employee
 	@PostMapping("/save")
 	public ResponseEntity<?> saveEmployee(@RequestBody Employee employee) {
 		Employee emp = employeeService.save(employee);
 		return new ResponseEntity<>(emp,HttpStatus.OK);
 	}
 	
+	//Get all Employees
 	@GetMapping("/getEmployees")
 	public ResponseEntity<?> getEmployee() {
 		List<Employee> emp = employeeService.getEmployee();
 		return new ResponseEntity<>(emp,HttpStatus.OK);
 	}
 	
+	//Get Employee By ID
 	@GetMapping("/getEmployeeById/{id}")
 	public ResponseEntity<?> getEmployeeById(@PathVariable String id) {
 		Employee emp = employeeService.getEmployeeById(Integer.parseInt(id));
